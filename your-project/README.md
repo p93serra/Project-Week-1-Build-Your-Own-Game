@@ -17,7 +17,7 @@ Mastermind Game developped in order to put in practice the learnings from Week 1
 Mastermint consist on finding the color code pickup randomly by the computer.
 
 ## Rules:
-	
+
 - The computer picks a sequence of colors. The number of colors is the code length. The default code length is 4.
 - The objective of the game is to guess the exact positions of the colors in the computer's sequence.
 - By default, a color can be used only once in a code sequence. If you start a new game with the 'repeat' parameter active, then any color can be used any number of times in the code sequence.
@@ -44,16 +44,16 @@ Mastermint consist on finding the color code pickup randomly by the computer.
 - Good Luck!!
 
 ## Workflow
-Outline the workflow you used in your project. What are the steps you went through?
+1 - Search game information.
+2 - Design code structure
+3 - Coding
+4 - Test code.
+5 - Implement color to the terminal output.
 
 ## Organization
 To organize my work I have used a kanban using Trello.
 
-What does your repository look like? Explain your folder and file structure.
-
 ## Links
-Include links to your repository, slides and kanban board. Feel free to include any other links associated with your project.
-
-[Repository](https://github.com/)  
+[Repository](https://github.com/p93serra/Project-Week-1-Build-Your-Own-Game)  
 [Slides](https://slides.com/)  
 [Trello](https://trello.com/invite/b/IzFQBVnr/0b7fa21e9c513bf7dd86abf776d33a5b/project1-game)  
