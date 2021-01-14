@@ -1,3 +1,9 @@
+################################
+## TERMINAL MASTERMIND
+## Author: Pau Serra
+## Version v1
+################################
+
 import random
 from os import system, name
 from termcolor import colored
@@ -13,42 +19,52 @@ def clear():
 
 # Function to update the board in the terminal.
 def print_board(passcode, guess_codes, guess_flags):
-    print("##########################################")
-    print("################  Menu  ##################")
-    print("##########################################")
-    print("#  Using numbers enter code:             #")
-    print("#   ", colored("4 - BLUE  ", "blue"), colored("5 - WHITE ", "white"), colored("6 - CYAN ", "cyan"), "    #")
-    print("#   ", colored("1 - RED   ", "red"), colored("2 - GREEN ", "green"), colored("3 - YELLOW ", "yellow"), "  #")
-    print("#  Example:                              #")
-    print("#    RED BLUE ORANGE WHITE ---> 1 4 6 5  #")
-    print("##########################################")
-    print("############    IRONHACK    ##############")
-    print("############   MASTERMIND   ##############")
-    print("##########################################")
-    print("# R W #", end="")
+    color_board = "magenta"
+    print(colored("##########################################",color_board))
+    print(colored("################  Menu  ##################",color_board))
+    print(colored("##########################################",color_board))
+    print(colored("#  Using numbers enter code:             #",color_board))
+    print(colored("#   ",color_board), colored("4 - BLUE  ", "blue"),
+        colored("5 - WHITE ", "white"), colored("6 - CYAN ", "cyan"),
+        colored("    #",color_board))
+    print(colored("#   ",color_board), colored("1 - RED   ", "red"),
+        colored("2 - GREEN ", "green"), colored("3 - YELLOW ", "yellow"),
+        colored("  #",color_board))
+    print(colored("##########################################",color_board))
+    print(colored("############    IRONHACK    ##############",color_board))
+    print(colored("############   MASTERMIND   ##############",color_board))
+    print(colored("##########################################",color_board))
+    print(colored("# R W #", color_board), end="")
 
     for x in passcode:
-        print("\t  " + x[:3], end="")
-    print()
+        if x != "?¿?":
+            print("\t  ", colored(x[:3], x.lower()), end="")
+        else:
+            print("\t  ", x[:3], end="")
+    print(colored("   #",color_board))
 
     for i in reversed(range(len(guess_codes))):
-        print("##########################################")
-        print("#", guess_flags[i][0], guess_flags[i][1], end=" #")
+        print(colored("##########################################",
+            color_board))
+        print(colored("#",color_board), guess_flags[i][0],
+            guess_flags[i][1], end="")
+        print(colored(" #",color_board), end="")
         for x in guess_codes[i]:
             if x != "***":
                 print("\t  ", colored(x[:3], x.lower()), end="")
             else:
                 print("\t  ", x[:3], end="")
-        print()
-    print("##########################################")
+        print(colored("   #",color_board))
+    print(colored("##########################################",color_board))
 
-def main(repeat = 0, dummy = 0):
+def startGame(repeat = 0, dummy = 0, chances = 10):
     colors = ["RED", "GREEN", "YELLOW", "BLUE", "WHITE", "CYAN"]
 
-    colors_map = {1:"RED", 2:"GREEN", 3:"YELLOW", 4:"BLUE", 5:"WHITE", 6:"CYAN"}
+    colors_map = {1:"RED", 2:"GREEN", 3:"YELLOW", 4:"BLUE", 5:"WHITE",
+        6:"CYAN"}
 
     if dummy == 1:
-        passcode = ["RED", "RED", "RED", "RED"]
+        passcode = ["RED", "GREEN", "YELLOW", "BLUE"]
     elif dummy == 0:
         if repeat == 0:
             random.shuffle(colors)
@@ -61,9 +77,6 @@ def main(repeat = 0, dummy = 0):
     else:
         print("Wrong dummy parameter!!! Only 0 or 1")
         return None
-
-
-    chances = 10
 
     show_passcode = ['?¿?', '?¿?', '?¿?', '?¿?']
 
@@ -80,25 +93,27 @@ def main(repeat = 0, dummy = 0):
         print_board(show_passcode, guess_codes, guess_flags)
 
         try:
-            code = list(map(int, input("Enter your choice = ").split()))
+            code = list(map(int, input("Enter your guess = ").split()))
         except ValueError:
             clear()
-            print("\tWrong choice!! Try again!!")
+            print(colored("Wrong choice!! Try again!!", "white", "on_red"))
             continue
 
         if len(code) != 4:
             clear()
-            print("\tWrong choice!! Try again!!")
+            print(colored("Wrong length!! Should guess 4 colors.", "white",
+                "on_red"))
             continue
 
-        flag = 0
+        err = 0
         for x in code:
             if x > 6 or x < 1:
-                flag = 1
+                err = 1
 
-        if flag == 1:
+        if err == 1:
             clear()
-            print("\tWrong choice!! Try again!!")
+            print(colored("Wrong code!! Should choose numbers between 1-6",
+                "white", "on_red"))
             continue
 
         for i in range(4):
@@ -125,7 +140,8 @@ def main(repeat = 0, dummy = 0):
         if guess_codes[turn] == passcode:
             clear()
             print_board(passcode, guess_codes, guess_flags)
-            print("Congratulations!! YOU WIN!!!!")
+            print(colored("Congratulations!! YOU WIN!!!!", "white", "on_green",
+                attrs=['blink']))
             break
 
         turn += 1
@@ -135,4 +151,5 @@ def main(repeat = 0, dummy = 0):
         if turn == chances:
             clear()
             print_board(passcode, guess_codes, guess_flags)
-            print("YOU LOSE!!! Better luck next time!!!")
+            print(colored("YOU LOSE!!! Better luck next time!!!", "white",
+                "on_red", attrs=['blink']))
