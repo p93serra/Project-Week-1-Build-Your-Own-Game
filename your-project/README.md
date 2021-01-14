@@ -55,5 +55,5 @@ To organize my work I have used a kanban using Trello.
 
 ## Links
 [Repository](https://github.com/p93serra/Project-Week-1-Build-Your-Own-Game)  
-[Slides](https://slides.com/)  
+[Slides](https://drive.google.com/file/d/1QXMDSfNif1u3iYdPwyF1QwnMRWn5cWcB/view?usp=sharing)  
 [Trello](https://trello.com/invite/b/IzFQBVnr/0b7fa21e9c513bf7dd86abf776d33a5b/project1-game)  
