@@ -1,8 +1,27 @@
-################################
-## TERMINAL MASTERMIND
-## Author: Pau Serra
-## Version v1
-################################
+#             ________________________________________________
+#            /                                                \
+#           |    _________________________________________     |
+#           |   |                                         |    |
+#           |   |                                         |    |
+#           |   |                                         |    |
+#           |   |           TERMINAL MASTERMIND           |    |
+#           |   |                                         |    |
+#           |   |                                         |    |
+#           |   |                                         |    |
+#           |   |   Author: Pau Serra                     |    |
+#           |   |   Version v1                            |    |
+#           |   |_________________________________________|    |
+#           |                                                  |
+#            \_________________________________________________/
+#                   \___________________________________/
+#                ___________________________________________
+#             _-'    .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.  --- `-_
+#          _-'.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--.  .-.-.`-_
+#       _-'.-.-.-. .---.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-`__`. .-.-.-.`-_
+#    _-'.-.-.-.-. .-----.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-----. .-.-.-.-.`-_
+# _-'.-.-.-.-.-. .---.-. .-------------------------. .-.---. .---.-.-.-.`-_
+#:-------------------------------------------------------------------------:
+#`---._.-------------------------------------------------------------._.---'
 
 import random
 from os import system, name
@@ -96,7 +115,8 @@ def startGame(repeat = 0, dummy = 0, chances = 10):
             code = list(map(int, input("Enter your guess = ").split()))
         except ValueError:
             clear()
-            print(colored("Wrong choice!! Try again!!", "white", "on_red"))
+            print(colored("Wrong format!! You should use only integers!!",
+                "white", "on_red"))
             continue
 
         if len(code) != 4:
@@ -132,9 +152,7 @@ def startGame(repeat = 0, dummy = 0, chances = 10):
                     guess_flags[turn][0] += 1
                 else:
                     guess_flags[turn][1] += 1
-                pos += 1
                 dummy_passcode.remove(colors_map[x])
-
 
         # Win condition
         if guess_codes[turn] == passcode:
